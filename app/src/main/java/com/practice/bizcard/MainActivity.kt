@@ -3,6 +3,7 @@ package com.practice.bizcard
 import android.media.ImageReader
 import android.os.Bundle
 import android.util.Log
+import android.view.RoundedCorner
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -145,18 +147,23 @@ fun Portfolio(data: List<String>) {
             ) {
                 Row(
                     modifier = Modifier
-                        .padding(8.dp)
+                        .padding(16.dp)
                         .background(MaterialTheme.colors.surface)
-                        .padding(8.dp)
+                        .padding(16.dp)
                 ) {
-                    CreateImageProfile(modifier = Modifier.size(100.dp))
+                    CreateImageProfile(
+                        modifier = Modifier
+                            .size(60.dp)
+                            .background(
+                                color = Color.LightGray,
+                                shape = RoundedCornerShape(50.dp)
+                            )
+                    )
                     Column(
                         modifier =
                         Modifier
                             .padding(8.dp)
-                            .align(
-                                alignment = Alignment.CenterVertically
-                            )
+                        //.align(alignment = Alignment.CenterVertically)
                     ) {
                         Text(text = item, fontWeight = FontWeight.Bold)
                         Text(text = "A great project", style = MaterialTheme.typography.body2)
