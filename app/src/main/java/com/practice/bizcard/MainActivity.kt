@@ -2,6 +2,7 @@ package com.practice.bizcard
 
 import android.media.ImageReader
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -65,28 +66,43 @@ fun CreateBizCard() {
                  * pulsamos sobre Refactor/función le damos un nombre y mágicamente crea juna función e
                  * incorpora la llamada a esta donde estaba el código*/
                 CreateImageProfile()
-                Divider(
-                    thickness = 4.dp
-                )
-                Column(modifier = Modifier.padding(5.dp)) {
+                Divider(thickness = 4.dp)
+                CreateInfo()
+                Button(
+                    onClick = {
+                        Log.d("Clicked", "CreateBizCard: Click")
+                    }
+                ) {
                     Text(
-                        text = "Jorge A.",
-                        style = MaterialTheme.typography.h4,
-                        color = MaterialTheme.colors.primaryVariant
-                    )
-                    Text(
-                        text = "Android Compose Developer",
-                        modifier = Modifier.padding(5.dp))
-                    Text(
-                        text = "@JorgeAgullo",
-                        modifier = Modifier.padding(5.dp),
-                        style = MaterialTheme.typography.subtitle1
+                        text = "Protfolio",
+                        style = MaterialTheme.typography.button
                     )
 
                 }
             }
 
         }
+    }
+}
+
+@Composable
+private fun CreateInfo() {
+    Column(modifier = Modifier.padding(5.dp)) {
+        Text(
+            text = "Jorge A.",
+            style = MaterialTheme.typography.h4,
+            color = MaterialTheme.colors.primaryVariant
+        )
+        Text(
+            text = "Android Compose Developer",
+            modifier = Modifier.padding(5.dp)
+        )
+        Text(
+            text = "@JorgeAgullo",
+            modifier = Modifier.padding(5.dp),
+            style = MaterialTheme.typography.subtitle1
+        )
+
     }
 }
 
