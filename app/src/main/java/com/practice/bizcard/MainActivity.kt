@@ -16,6 +16,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -45,6 +47,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun CreateBizCard() {
+    val bClickState = remember {
+        mutableStateOf(false)
+    }
+
     Surface(
         modifier = Modifier
             .fillMaxWidth()
@@ -72,14 +78,21 @@ fun CreateBizCard() {
                 CreateInfo()
                 Button(
                     onClick = {
-                        Log.d("Clicked", "CreateBizCard: Click")
+                        bClickState.value = !bClickState.value
+                        Log.d("Clicked", "CreateBizCard: Click $bClickState")
                     }
                 ) {
                     Text(
                         text = "Protfolio",
                         style = MaterialTheme.typography.button
                     )
-
+                }
+                if (bClickState.value) {
+                    Content()
+                } else {
+                    Box{
+                        /**NOTHING*/
+                    }
                 }
             }
 
@@ -104,7 +117,13 @@ fun Content() {
             shape = RoundedCornerShape(corner = CornerSize(6.dp)),
             border = BorderStroke(width = 2.dp, color = Color.LightGray)
         ) {
-            Portfolio(data = listOf("Project 1", "Project 2", "Project 3"))
+            Portfolio(data = listOf(
+                "Project 1",
+                "Project 2",
+                "Project 3",
+                "Project 4",
+                "Project 5",
+                "Project 6"))
 
 
         }
