@@ -58,28 +58,39 @@ fun CreateBizCard() {
             shape = RoundedCornerShape(corner = CornerSize(15.dp)),
             elevation = 4.dp
         ) {
-            Column(modifier = Modifier.height(300.dp),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally) {
-                Surface(
-                    modifier = Modifier
-                        .size(150.dp)
-                        .padding(5.dp),
-                    shape = CircleShape,
-                    border = BorderStroke(0.5.dp, Color.LightGray),
-                    elevation = 4.dp,
-                    color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f),
-                ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.standard_image_150),
-                        contentDescription = "Profile image",
-                        modifier = Modifier.size(135.dp),
-                        contentScale = ContentScale.Crop
-                    )
-                }
+            Column(
+                modifier = Modifier.height(300.dp),
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                /**Para crear una función de una parte del código que ya está desarrollada y funcionando
+                * pulsamos sobre Refactor/función le damos un nombre y mágicamente crea juna función e
+                * incorpora la llamada a esta donde estaba el código*/
+                CreateImageProfile()
             }
 
         }
+    }
+}
+
+@Composable
+private fun CreateImageProfile() {
+    Surface(
+        modifier = Modifier
+            .size(150.dp)
+            .padding(5.dp),
+        shape = CircleShape,
+        border = BorderStroke(0.5.dp, Color.LightGray),
+        elevation = 4.dp,
+        color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f),
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.standard_image_150),
+            contentDescription = "Profile image",
+            modifier = Modifier.size(135.dp),
+            contentScale = ContentScale.Crop
+        )
     }
 }
 
