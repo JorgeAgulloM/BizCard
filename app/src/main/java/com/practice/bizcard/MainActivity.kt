@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.practice.bizcard.ui.theme.BizCardTheme
@@ -135,15 +136,31 @@ fun Portfolio(data: List<String>) {
     /**Funciona como un RecyclerView*/
     LazyColumn {
         items(data) { item ->
-            Card(modifier = Modifier
-                .padding(12.dp)
-                .fillMaxWidth(),
-            shape = RectangleShape) {
-                Row(modifier = Modifier
-                    .padding(8.dp)
-                    .background(MaterialTheme.colors.surface)
-                    .padding(16.dp)) {
-                    CreateImageProfile()
+            Card(
+                modifier = Modifier
+                    .padding(12.dp)
+                    .fillMaxWidth(),
+                shape = RectangleShape,
+                elevation = 4.dp
+            ) {
+                Row(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .background(MaterialTheme.colors.surface)
+                        .padding(8.dp)
+                ) {
+                    CreateImageProfile(modifier = Modifier.size(100.dp))
+                    Column(
+                        modifier =
+                        Modifier
+                            .padding(8.dp)
+                            .align(
+                                alignment = Alignment.CenterVertically
+                            )
+                    ) {
+                        Text(text = item, fontWeight = FontWeight.Bold)
+                        Text(text = "A great project", style = MaterialTheme.typography.body2)
+                    }
                 }
             }
         }
@@ -183,7 +200,7 @@ private fun CreateImageProfile(modifier: Modifier = Modifier) {
         color = MaterialTheme.colors.onSurface.copy(alpha = 0.5f),
     ) {
         Image(
-            painter = painterResource(id = R.drawable.standard_image_150),
+            painter = painterResource(id = R.drawable.default_avatar),
             contentDescription = "Profile image",
             modifier = modifier.size(135.dp),
             contentScale = ContentScale.Crop
