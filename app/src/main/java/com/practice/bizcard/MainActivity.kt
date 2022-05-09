@@ -68,6 +68,22 @@ fun CreateBizCard() {
                 Divider(
                     thickness = 4.dp
                 )
+                Column(modifier = Modifier.padding(5.dp)) {
+                    Text(
+                        text = "Jorge A.",
+                        style = MaterialTheme.typography.h4,
+                        color = MaterialTheme.colors.primaryVariant
+                    )
+                    Text(
+                        text = "Android Compose Developer",
+                        modifier = Modifier.padding(5.dp))
+                    Text(
+                        text = "@JorgeAgullo",
+                        modifier = Modifier.padding(5.dp),
+                        style = MaterialTheme.typography.subtitle1
+                    )
+
+                }
             }
 
         }
