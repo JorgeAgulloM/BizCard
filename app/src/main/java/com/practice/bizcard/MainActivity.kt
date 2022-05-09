@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -22,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -90,9 +92,7 @@ fun CreateBizCard() {
                 if (bClickState.value) {
                     Content()
                 } else {
-                    Box{
-                        /**NOTHING*/
-                    }
+                    Box { /**NOTHING*/ }
                 }
             }
 
@@ -100,7 +100,6 @@ fun CreateBizCard() {
     }
 }
 
-@Preview
 @Composable
 fun Content() {
     Box(
@@ -117,24 +116,36 @@ fun Content() {
             shape = RoundedCornerShape(corner = CornerSize(6.dp)),
             border = BorderStroke(width = 2.dp, color = Color.LightGray)
         ) {
-            Portfolio(data = listOf(
-                "Project 1",
-                "Project 2",
-                "Project 3",
-                "Project 4",
-                "Project 5",
-                "Project 6"))
-
-
+            Portfolio(
+                data = listOf(
+                    "Project 1",
+                    "Project 2",
+                    "Project 3",
+                    "Project 4",
+                    "Project 5",
+                    "Project 6"
+                )
+            )
         }
     }
 }
 
 @Composable
 fun Portfolio(data: List<String>) {
+    /**Funciona como un RecyclerView*/
     LazyColumn {
         items(data) { item ->
-            Text(item)
+            Card(modifier = Modifier
+                .padding(12.dp)
+                .fillMaxWidth(),
+            shape = RectangleShape) {
+                Row(modifier = Modifier
+                    .padding(8.dp)
+                    .background(MaterialTheme.colors.surface)
+                    .padding(16.dp)) {
+                    CreateImageProfile()
+                }
+            }
         }
     }
 }
@@ -174,7 +185,7 @@ private fun CreateImageProfile(modifier: Modifier = Modifier) {
         Image(
             painter = painterResource(id = R.drawable.standard_image_150),
             contentDescription = "Profile image",
-            modifier = Modifier.size(135.dp),
+            modifier = modifier.size(135.dp),
             contentScale = ContentScale.Crop
         )
     }
