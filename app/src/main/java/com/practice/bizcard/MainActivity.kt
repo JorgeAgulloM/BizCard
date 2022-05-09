@@ -11,10 +11,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -65,9 +62,12 @@ fun CreateBizCard() {
             ) {
 
                 /**Para crear una función de una parte del código que ya está desarrollada y funcionando
-                * pulsamos sobre Refactor/función le damos un nombre y mágicamente crea juna función e
-                * incorpora la llamada a esta donde estaba el código*/
+                 * pulsamos sobre Refactor/función le damos un nombre y mágicamente crea juna función e
+                 * incorpora la llamada a esta donde estaba el código*/
                 CreateImageProfile()
+                Divider(
+                    thickness = 4.dp
+                )
             }
 
         }
@@ -75,9 +75,9 @@ fun CreateBizCard() {
 }
 
 @Composable
-private fun CreateImageProfile() {
+private fun CreateImageProfile(modifier: Modifier = Modifier) {
     Surface(
-        modifier = Modifier
+        modifier = modifier
             .size(150.dp)
             .padding(5.dp),
         shape = CircleShape,
