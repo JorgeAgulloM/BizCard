@@ -85,6 +85,35 @@ fun CreateBizCard() {
     }
 }
 
+@Preview
+@Composable
+fun Content() {
+    Box(
+        modifier = Modifier
+            .fillMaxHeight()
+            .fillMaxWidth()
+            .padding(5.dp)
+    ) {
+        Surface(
+            modifier = Modifier
+                .padding(3.dp)
+                .fillMaxWidth()
+                .fillMaxHeight(),
+            shape = RoundedCornerShape(corner = CornerSize(6.dp)),
+            border = BorderStroke(width = 2.dp, color = Color.LightGray)
+        ) {
+            Portfolio(data = listOf("Project 1", "Project 2", "Project 3"))
+
+
+        }
+    }
+}
+
+@Composable
+fun Portfolio(data: List<String>) {
+
+}
+
 @Composable
 private fun CreateInfo() {
     Column(modifier = Modifier.padding(5.dp)) {
